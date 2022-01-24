@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Responsive Layout</title>
+<style>
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+ <script type="text/javascript" src="js/prototype.js"></script>
+        <script type="text/javascript">
+                Event.observe(window, "load", function() {
+                    $$("td.up").each(function(element) {
+                        element.observe("click", UP)
+                    });
+ 
+                    $$("td.down").each(function(element) {
+                        element.observe("click", DOWN)
+                    });
+                });
+ 
+                function UP(event) {
+                    var element = event.element().ancestors()[0];
+                    var previous = element.previous();
+                    if (previous) {
+                        previous.remove();
+                        element.insert({after:previous});
+                    }
+                }
+ 
+                function DOWN(event) {
+                    var element = event.element().ancestors()[0];
+                    var next = element.next();
+                    if (next) {
+                        next.remove();
+                        element.insert({before:next});
+                    }
+                }
+        </script>
+<body>
+<table style="width:30%">
+  <tr>
+    <td>S.NO</td>
+    <td>Title</td>
+    <td>Action</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Title1</td>
+    <td><button type="button" disabled >UP</button>
+    <button type="button" >DOWN</button></td>
+  </tr>
+<tr>
+    <td>2</td>
+    <td>Title2</td>
+    <td><button type="button"> UP</button>
+    <button type="button"> DOWN</button></td>
+  </tr>
+<tr>
+    <td>3</td>
+    <td>Title3</td>
+    <td><button type="button" >UP</button>
+    <button type="button" >DOWN</button></td>
+  </tr>
+<tr>
+    <td>4</td>
+    <td>Title4</td>
+    <td><button type="button" >UP</button>
+    <button type="button"> DOWN</button></td>
+  </tr>
+<tr>
+    <td>5</td>
+    <td>Title5</td>
+    <td><button type="button" >UP</button>
+    <button type="button" >DOWN</button></td>
+  </tr>
+<tr>
+    <td>6</td>
+    <td>Title6</td>
+  <td><button type="button"> UP</button>
+    <button type="button" >DOWN</button></td>  
+  </tr>
+<tr>
+    <td>7</td>
+    <td>Title7</td>
+   <td><button type="button"> UP</button>
+    <button type="button" disabled>DOWN</button></td>  
+  </tr>
+</table>
+
+
+
+</body>
+</html>
